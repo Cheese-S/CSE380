@@ -172,6 +172,7 @@ export default class Homework3_Scene extends Scene {
 		const viewportCenter = this.viewport.getCenter().clone();
 		const paddedViewportSize = this.viewport.getHalfSize().scaled(2).add(this.WORLD_PADDING.scaled(2));
 		const baseViewportSize = this.viewport.getHalfSize().scaled(2);
+		console.log(`size: ${baseViewportSize}`);
 
 		// Check the position of our player
 		this.lockPlayer(viewportCenter, baseViewportSize);
@@ -598,6 +599,23 @@ export default class Homework3_Scene extends Scene {
 	lockPlayer(viewportCenter: Vec2, viewportSize: Vec2): void {
 		//REMOVE
 		// Your code goes here:
+		let pos = this.player.position; 
+		let size = this.player.sizeWithZoom;
+		if (pos.x < size.x) {
+			pos.x = size.x; 
+		}
+		if (pos.y < size.y) {
+			pos.y = size.y;
+		}
+		if (pos.x > viewportSize.x - size.x) {
+			pos.x = viewportSize.x - size.x; 
+		}
+		if (pos.y > viewportSize.y - size.y) {
+			pos.y = viewportSize.y - size.y; 
+		}
+		
+		
+		
 	}
 
 	// HOMEWORK 3 - TODO (2. collision)
