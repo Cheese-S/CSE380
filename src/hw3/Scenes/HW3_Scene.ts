@@ -80,7 +80,7 @@ export default class Homework3_Scene extends Scene {
 	loadScene(){
 		/* ##### DO NOT MODIFY ##### */
 		// Load in the player car spritesheet
-		this.load.spritesheet("player", "hw3_assets/spritesheets/cars.json");
+		this.load.spritesheet("player", "hw3_assets/spritesheets/vehicle.json");
 
 		// Load in the background image
 		this.load.image("desert_road", "hw3_assets/sprites/road.jpg");
@@ -203,7 +203,6 @@ export default class Homework3_Scene extends Scene {
 		
 		// Set the player's position to the middle of the screen, and scale it down
 		this.player.position.set(this.viewport.getCenter().x, this.viewport.getCenter().y);
-		this.player.scale.set(0.4, 0.4);
 
 		// Play the idle animation by default
 		this.player.animation.play("driving");
