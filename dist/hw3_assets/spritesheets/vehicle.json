@@ -51,7 +51,7 @@
             ]
         },
         {
-            "name": "Taking damage",
+            "name": "damage",
             "repeat": true,
             "frames": [
                 {
@@ -77,7 +77,7 @@
             ]
         },
         {
-            "name": "Dying",
+            "name": "dying",
             "repeat": false,
             "frames": [
                 {
@@ -95,7 +95,7 @@
             ]
         },
         {
-            "name": "Dead",
+            "name": "dead",
             "repeat": true,
             "frames": [
                 {

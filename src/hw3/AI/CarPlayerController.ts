@@ -47,12 +47,15 @@ export default class CarPlayerController implements AI {
 
 		this.receiver = new Receiver();
 		this.emitter = new Emitter();
+
+		this.receiver.subscribe(Homework3Event.PLAYER_DAMAGE);
 	}
 
 	activate(options: Record<string, any>){};
 
 	handleEvent(event: GameEvent): void {
 		// We need to handle animations when we get hurt
+		console.log(event);
 		if(event.type === Homework3Event.PLAYER_DAMAGE){
 			if(event.data.get("health") === 0){
 				// Play animation and queue event to end game

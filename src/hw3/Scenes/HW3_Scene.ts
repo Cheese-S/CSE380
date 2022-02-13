@@ -172,7 +172,6 @@ export default class Homework3_Scene extends Scene {
 		const viewportCenter = this.viewport.getCenter().clone();
 		const paddedViewportSize = this.viewport.getHalfSize().scaled(2).add(this.WORLD_PADDING.scaled(2));
 		const baseViewportSize = this.viewport.getHalfSize().scaled(2);
-		console.log(`size: ${baseViewportSize}`);
 
 		// Check the position of our player
 		this.lockPlayer(viewportCenter, baseViewportSize);
@@ -480,6 +479,13 @@ export default class Homework3_Scene extends Scene {
 				// If the rock is spawned in and it overlaps the player
 				if(rock.visible && this.player.collisionShape.overlaps(rock.boundary)){
 					// Put your code here:
+					rock.visible = false; 
+					this.playerinvincible = true; 
+					this.playerHealth -= 1; 
+					this.healthLabel.text = `Health: ${this.playerHealth}`;
+					this.emitter.fireEvent(Homework3Event.PLAYER_DAMAGE, {health: this.playerHealth}); 
+
+
 				}
 			}
 		}
