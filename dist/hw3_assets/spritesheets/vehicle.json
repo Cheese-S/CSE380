@@ -29,7 +29,7 @@
             ]
         },
         {
-            "name": "Firing a weapon",
+            "name": "firing",
             "repeat": true,
             "frames": [
                 {

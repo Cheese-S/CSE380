@@ -85,6 +85,7 @@ export default class CarPlayerController implements AI {
 		} else {
 			if (Input.isMouseJustPressed()) {
 				this.emitter.fireEvent(Homework3Event.SHOOT_BULLET, {position: this.owner.position.clone()});
+				this.owner.animation.play("firing", false); 
 			}
 		}
 

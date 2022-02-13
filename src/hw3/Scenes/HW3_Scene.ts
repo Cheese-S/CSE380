@@ -250,7 +250,7 @@ export default class Homework3_Scene extends Scene {
 			// HOMEWORK 3 - TODO
 			// Currently bullets use the base custom gradient circle shader, 
 			// you'll need to change this to the Linear Gradient Circle once you get that shader working. 
-			this.bullets[i].useCustomShader(Homework3Shaders.GRADIENT_CIRCLE);
+			this.bullets[i].useCustomShader(Homework3Shaders.LINEAR_GRADIENT_CIRCLE);
 
 			this.bullets[i].visible = false;
 			// This is the color each bullet is set to by default, you can change this if you like a different color
@@ -305,11 +305,21 @@ export default class Homework3_Scene extends Scene {
 			}
 		}
 
+		
+
 		if(bullet !== null){
 			// Spawn a bullet
+			let bullet_speed: number; 
+			if (Math.floor(Math.random() * 2)) {
+				bullet.color = Color.MAGENTA;
+				bullet_speed = 250;
+			} else {
+				bullet.color = Color.YELLOW;
+				bullet_speed = 500; 
+			}
 			bullet.visible = true;
 			bullet.position = position.add(new Vec2(0, -64));
-			bullet.setAIActive(true, {speed: 250});
+			bullet.setAIActive(true, {speed: bullet_speed});
 		}
 	}
 
