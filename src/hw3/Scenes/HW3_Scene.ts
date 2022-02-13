@@ -486,6 +486,8 @@ export default class Homework3_Scene extends Scene {
 					this.emitter.fireEvent(Homework3Event.PLAYER_DAMAGE, {health: this.playerHealth}); 
 
 
+					// Break early since we are invincble
+					break; 
 				}
 			}
 		}
@@ -577,6 +579,16 @@ export default class Homework3_Scene extends Scene {
 	 */
 	handleScreenDespawn(node: CanvasNode, viewportCenter: Vec2, paddedViewportSize: Vec2, isBullet: boolean): void {
 		// Your code goes here:
+
+		if (node.position.y < viewportCenter.y - paddedViewportSize.y / 2 - node.sizeWithZoom.y||
+			node.position.y > viewportCenter.y + paddedViewportSize.y / 2 + node.sizeWithZoom.y) {
+				
+				if (isBullet) {
+					this.emitter.fireEvent(Homework3Event.BULLET_USED, {id: node.id});
+				} else {
+					node.visible = false; 
+				}
+			}
 	}
 
 	// HOMEWORK 3 - TODO (3. BOUND CAR)
