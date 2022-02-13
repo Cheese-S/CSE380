@@ -4,6 +4,7 @@ import Vec2 from "./Wolfie2D/DataTypes/Vec2";
 import Input from "./Wolfie2D/Input/Input";
 import Graphic from "./Wolfie2D/Nodes/Graphic";
 import { GraphicType } from "./Wolfie2D/Nodes/Graphics/GraphicTypes";
+import AnimatedSprite from "./Wolfie2D/Nodes/Sprites/AnimatedSprite";
 import Sprite from "./Wolfie2D/Nodes/Sprites/Sprite";
 import Scene from "./Wolfie2D/Scene/Scene";
 import Color from "./Wolfie2D/Utils/Color";
@@ -16,7 +17,7 @@ import Color from "./Wolfie2D/Utils/Color";
 export default class default_scene extends Scene {
     /* ########## MEMBER DEFINITIONS ##########*/
     private logo: Sprite;
-    private player: Graphic;
+    private player: AnimatedSprite;
 
     /* ########## BUILT-IN FUNCTIONS ########## */
     // The following are built-in abstract Scene functions you are meant to extend.
@@ -32,6 +33,7 @@ export default class default_scene extends Scene {
         // The second argument is the path to the actual image.
         // Paths start in the "dist/" folder, so start building your path from there
         this.load.image("logo", "demo_assets/images/wolfie2d_text.png");
+        this.load.spritesheet("tank", "demo_assets/spritesheets/vehicle/vehicle.json");
     }
 
     // startScene() is where you should build any game objects you wish to have in your scene,
@@ -61,11 +63,12 @@ export default class default_scene extends Scene {
             position: new Vec2(center.x, center.y + 100)
         }
 
-        // Create the rect
-        this.player = this.add.graphic(GraphicType.RECT, "primary", options);
+        this.player = this.add.animatedSprite("tank", "primary");
+        this.player.animation.play("Driving straight ahead"); 
+        this.player.position.set(center.x, center.y + 100); 
+        
 
-        // Now, let's change the color of our player
-        this.player.color = Color.ORANGE;
+        
     }
 
     // updateScene() is where you can handle any frame by frame updates to your scene.
