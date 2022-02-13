@@ -82,6 +82,10 @@ export default class CarPlayerController implements AI {
 		//If shift is currently being held down, increase the speed of the car. If not, check if mouse click has been pressed to shoot a bullet.
 		if(Input.isKeyPressed("shift")) {
 			this.speed = this.MAX_SPEED;
+		} else {
+			if (Input.isMouseJustPressed()) {
+				this.emitter.fireEvent(Homework3Event.SHOOT_BULLET, {position: this.owner.position.clone()});
+			}
 		}
 
 		// We need to handle player input for movement
