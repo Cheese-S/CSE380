@@ -672,9 +672,11 @@ export default class Homework3_Scene extends Scene {
 	 * @returns True if the two shapes overlap, false if they do not
 	 */
 	static checkAABBtoCircleCollision(aabb: AABB, circle: Circle): boolean {
-		//REMOVE
-		// Your code goes here:
-		return false;
+		let closeset: Vec2 = Vec2.ZERO; 
+		closeset.x = Math.min(Math.max(circle.center.x, aabb.left), aabb.right);
+		closeset.y = Math.min(Math.max(circle.center.y, aabb.top), aabb.bottom);
+		return closeset.distanceSqTo(circle.center) <= circle.radius * circle.radius;
+		
 	}
 
 }
